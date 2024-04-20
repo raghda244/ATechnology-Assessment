@@ -1,0 +1,43 @@
+/* You can add global styles to this file, and also import other style files */
+@import "primeng/resources/themes/lara-light-blue/theme.css";
+@import "primeng/resources/primeng.css";
+@import "primeicons/primeicons.css";
+
+.icon-color {
+    color: #0771DE;
+}
+
+.icon-bg {
+    background-color: #E8F2FF;
+    color: #0771DE;
+
+}
+
+.selectable-div {
+    background-color: #ffffff;
+    border-style: solid;
+    border-color: #83899F4D;
+    border-width: 0.5px;
+}
+
+.selectable-div:hover {
+    background-color: #E8F2FF;
+    border-style: none;
+    background-image: url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' rx='4' ry='4' stroke='%230771DEFF' stroke-width='1' stroke-dasharray='11%2c 18%2c 16' stroke-dashoffset='3' stroke-linecap='round'/%3e%3c/svg%3e");
+}
+
+.selectable-div:hover .icon-bg {
+    background-color: #ffffff
+}
+
+.div-borders {
+    border-style: solid;
+    border-color: #83899F4D;
+    border-width: 0.5px;
+}
+
+.selectable-div:hover .input-border {
+    border-style: solid;
+    border-width: 0.5;
+    border-color: #0771DE;
+}

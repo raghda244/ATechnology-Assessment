@@ -1,0 +1,25 @@
+<p-menubar>
+    <ng-template pTemplate="start">
+        <i class="pi pi-fw pi-home"></i>
+        <label>{{'Home'|translate}}</label>
+    </ng-template>
+    <ng-template pTemplate="end">
+        <p-dropdown class="flex flex-row align-items-center" [(ngModel)]="selectedLanguage" [options]="languages"
+            [style]="{'width':'100%'}" optionLabel="name" [showClear]="false" (onChange)="changeLanguage()">
+            <ng-template pTemplate="selectedItem">
+                <div class="flex align-items-center gap-2" *ngIf="selectedLanguage">
+                    <div>{{ selectedLanguage.name}}</div>
+                </div>
+            </ng-template>
+            <ng-template let-lang pTemplate="item">
+                <div class="flex align-items-center gap-1" width="100%">
+                    <div>{{ lang.name }}</div>
+                </div>
+            </ng-template>
+        </p-dropdown>
+
+    </ng-template>
+</p-menubar>
+<div class="flex col-12 justify-content-center">
+    <p-button (click)="show()">{{'CreateNewDeal'|translate}}</p-button>
+</div>

@@ -1,0 +1,158 @@
+<div class="col-12">
+    <!-- First Container -->
+    <div class="flex flex-row gap-3 mt-5">
+        <div class="col-8 md:col-9 div-borders border-round-lg p-3 text-lg md:text-2xl">
+            {{'BuyRentTitle'|translate}}
+        </div>
+        <div
+            class="flex align-items-center justify-content-center div-borders border-round-lg py-3 px-3 text-lg md:text-2xl">
+            <i [class]="currentLanguage === 'en'?'pi pi-align-left text-2xl md:text-3xl py-1 px-1':'pi pi-align-right text-2xl md:text-3xl py-1 px-1'"></i>
+        </div>
+    </div>
+
+    <!-- Second Container -->
+    <div class="flex flex-column md:flex-row mt-5 gap-2 justify-content-between">
+        <div class="col-12 md:col-6 flex-column selectable-div border-round-lg pb-3">
+            <div class="flex flex-row gap-4">
+                <div class="col-1">
+                    <i
+                        class="pi pi-users text-2xl md:text-3xl border border-none border-round-lg  py-2 px-2 icon-bg"></i>
+                </div>
+                <div class="col-10">
+                    <p class="text-base md:text-xl mt-0">{{'SelectCustomer' | translate}}</p>
+                    <p class="text-400 text-sm md:text-base">{{'SelectCustomerDesc'|translate}}</p>
+                </div>
+            </div>
+            <div class="col-12">
+                <p-autoComplete [(ngModel)]="selectedUser" [suggestions]="filteredUsers"
+                    (completeMethod)="filterUser($event)" field="name" [dropdown]="true" dropdownIcon="pi pi-search" 
+                    [style]="{'width':'100%'}" [placeholder]="'SearchCustomerPlaceholder'|translate">
+                    <ng-template let-user pTemplate="item">
+                        <div class="flex align-items-center gap-2" width="100%">
+                            <img src={{user.img}} class="border-round-lg" width="10%" />
+                            <div>{{ user.name }}</div>
+                        </div>
+                    </ng-template>
+                </p-autoComplete>
+            </div>
+        </div>
+        <div class="col-12 md:col-6 flex-column selectable-div border-round-lg pb-3">
+            <div class="flex flex-row gap-4">
+                <div class="col-1 pl-0">
+                    <i
+                        class="pi pi-wallet text-2xl md:text-3xl border border-none border-round-lg  py-2 px-2 icon-bg"></i>
+                </div>
+                <div class="col-10">
+                    <p class="text-base md:text-xl mt-0">{{'TransactionPrice'|translate}}</p>
+                    <p class="text-400 text-sm md:text-base">{{'TransactionPriceDesc'|translate}}
+                    </p>
+                </div>
+            </div>
+            <div class="flex flex-row mb-auto">
+                <input class="div-borders w-12 text-center" type="text" pInputText [value]="'50000'| currency" disabled />
+            </div>
+        </div>
+    </div>
+
+    <!-- Third Container -->
+    <div
+        class="flex flex-column md:flex-row mt-5 gap-2 justify-content-between div-borders border-round-lg align-items-center">
+        <div class="col-12 md:col-6 flex flex-row align-items-center">
+            <i
+                class="pi pi-question-circle border border-none border-round-lg icon-color text-base md:text-xl"></i>
+            <p class="text-base md:text-xl px-3">{{'ProbabilityOfSuccess'|translate}}</p>
+            <i class="pi pi-file-edit text-base md:text-xl border-round-lg  py-1 px-1 div-borders border-round-lg"></i>
+        </div>
+        <div class="col-12 md:col-6 flex-column pb-3">
+            <p-slider value="50"></p-slider>
+        </div>
+    </div>
+
+    <!-- Fourth Container -->
+    <div class="flex flex-column md:flex-row md:flex-wrap lg:flex-row mt-5 justify-content-between align-items-stretch">
+        <div class="flex flex-column col-12 md:col-6 lg:col-4">
+            <p class="text-base md:text-lg lg:text-xl">{{'ResponsibleTransaction'|translate}}</p>
+            <div class="flex flex-row div-borders border-round-lg col-12 align-items-center">
+                <div class="flex flex-row">
+                    <img src="assets/images/character.jpeg" class="border-circle" width="20%" />
+                    <p class="text-base md:text-lg lg:text-xl px-1">{{'MohamedGhareb'|translate}}</p>
+                </div>
+                <div class="mx-1">
+                    <i class="pi pi-users p-text-secondary border-dotted border-circle text-2xl md:text-3xl lg:text-4xl p-2"
+                        pBadge value="+"></i>
+                </div>
+            </div>
+        </div>
+        <div class="flex flex-column col-12 md:col-6 lg:col-4">
+            <p class="text-base md:text-lg lg:text-xl">{{'Source'|translate}}</p>
+            <p-dropdown class="flex flex-row align-items-center" [(ngModel)]="selectedPlatform" [options]="platforms"
+                [style]="{'width':'100%'}" optionLabel="name" [showClear]="false" [placeholder]="'SelectPlatformPlaceholder'|translate">
+                <ng-template pTemplate="selectedItem">
+                    <div class="flex align-items-center gap-2" *ngIf="selectedPlatform">
+                        <img src={{selectedPlatform.img}} class="border-round-lg" width="20%" />
+                        <div>{{ selectedPlatform.name }}</div>
+                    </div>
+                </ng-template>
+                <ng-template let-platform pTemplate="item">
+                    <div class="flex align-items-center gap-1" width="100%">
+                        <img src={{platform.img}} class="border-round-lg" width="20%" />
+                        <div>{{ platform.name }}</div>
+                    </div>
+                </ng-template>
+            </p-dropdown>
+        </div>
+        <div class="flex flex-column col-12 md:col-6 lg:col-4">
+            <p class="text-base md:text-lg lg:text-xl">{{'Project'|translate}}</p>
+            <p-dropdown class="flex flex-row align-items-center" [(ngModel)]="selectedProject" [options]="projects"
+                [style]="{'width':'100%'}" optionLabel="name" [showClear]="false" [placeholder]="'SelectProjectPlaceholder'|translate">
+                <ng-template pTemplate="selectedItem">
+                    <div class="flex align-items-center gap-2" *ngIf="selectedProject">
+                        <img src={{selectedProject.img}} class="border-round-lg" width="20%" />
+                        <div>{{ selectedProject.name }}</div>
+                    </div>
+                </ng-template>
+                <ng-template let-project pTemplate="item">
+                    <div class="flex align-items-center gap-1" width="100%">
+                        <img src={{project.img}} class="border-round-lg" width="20%" />
+                        <div>{{ project.name }}</div>
+                    </div>
+                </ng-template>
+            </p-dropdown>
+        </div>
+    </div>
+
+    <!-- Fifth container -->
+    <div class="flex flex-column mt-5">
+        <p class="text-base md:text-lg lg:text-xl">{{'Tags'|translate}}</p>
+        <p-chips [(ngModel)]="chipValues" [placeholder]="'NewDeal' | translate"></p-chips>
+    </div>
+
+    <!-- Sixth container -->
+    <div class="flex flex-column div-borders border-round-lg mt-5">
+        <div class="flex flex-row align-items-center gap-2 border-bottom-1 p-3">
+            <i class="pi pi-inbox icon-color text-base md:text-xl pr-2"></i>
+            <p class="text-base md:text-lg lg:text-xl">{{'Products'|translate}}</p>
+            <input class="div-borders text-center col-2 md:col-1" type="text" pInputText value="00" disabled />
+        </div>
+        <div class="flex flex-column lg:flex-row justify-content-center align-items-center">
+            <img class="col-4 md:col-2" src="assets/images/Checking boxes-amico.png" />
+            <div class="col-8 md:col-4 flex-column">
+                <p class="text-base md:text-lg lg:text-xl">{{'NoProducts'|translate}}</p>
+                <p class="text-400 text-sm md:text-base lg:text-lg">{{'AddProductDesc'|translate}}
+                </p>
+            </div>
+            <p-button class="mb-5" [label]="'AddProduct'|translate" icon="pi pi-plus-circle" iconPos="right" size="small"></p-button>
+        </div>
+    </div>
+
+    <!-- Seventh container -->
+    <div class="flex flex-row mt-5 div-borders border-round-lg p-3 text-lg md:text-2xl">
+        {{'AdditionalInformation' |translate}}
+    </div>
+
+    <!-- Footer -->
+    <div class="flex align-self-end mt-5 justify-content-between">
+        <p-button [label]="'SignContract'|translate" icon="pi pi-file" iconPos="right" size="small" disabled></p-button>
+        <p-splitButton [label]="'AddDeal'|translate" [model]="this.items" outlined size="small"></p-splitButton>
+    </div>
+</div>
